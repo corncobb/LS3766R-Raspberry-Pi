@@ -36,7 +36,7 @@ class LS7366R():
 
     #   Modes
 
-    #May need to be change "FOURX_COUNT" line depending on the quadrature count mode... look at datasheet.
+    #May need to be change "QUADRATURE_COUNT_MODE" line depending on the quadrature count mode... look at datasheet.
     #These values are in HEX (base 16) whereas the data sheet displays them in binary.
     #Datasheet can be found here: https://www.lsicsi.com/pdfs/Data_Sheets/LS7366R.pdf
 
@@ -45,7 +45,7 @@ class LS7366R():
     #0x02: x2 quadrature count mode (two counts per quadrature cycle).
     #0x03: x4 quadrature count mode (four counts per quadrature cycle).
 
-    FOURX_COUNT = 0x00
+    QUADRATURE_COUNT_MODE = 0x00
 
 
     FOURBYTE_COUNTER = 0x00
@@ -77,7 +77,7 @@ class LS7366R():
         print('Clearing Encoder CS%s\'s Count...\t' % (str(CSX)), self.clearCounter())
         print('Clearing Encoder CS%s\'s Status..\t' % (str(CSX)), self.clearStatus())
 
-        self.spi.xfer2([self.WRITE_MODE0, self.FOURX_COUNT])
+        self.spi.xfer2([self.WRITE_MODE0, self.QUADRATURE_COUNT_MODE])
         
         sleep(.1) #Rest
         
